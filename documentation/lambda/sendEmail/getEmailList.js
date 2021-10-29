@@ -1,13 +1,13 @@
-const getEmailList = (ddb, surveyName, handleError, callback) => {
+const getEmailList = (ddb, tableName, handleError, callback) => {
     const getParams = {
-      TableName: surveyName
+      TableName: tableName
     };
     ddb.scan(getParams, function (err, data) {
         if (err) { 
             handleError(err);
         }
         if (data) {
-            callback(data);
+            callback(data.Items);
         }
     });
 };

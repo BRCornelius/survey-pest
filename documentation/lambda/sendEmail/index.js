@@ -5,11 +5,13 @@ const generateHTML = require('generateHtml.js');
 const getEmailList = require('getEmailList.js');
 
 const MY_EMAIL = 'brcornelius@gmail.com';
+const getListBySurveyName = (surveyName, allSurveys) => allSurveys.find(survey => survey.name.S === surveyName);
 
 exports.handler = (event, context, callback) => {
-    const { subject } = event;
-    getEmailList(ddb, 'samples', context.fail, data => {
-        const to = data.Items[0].emails.SS || ['brcornelius@gmail.com'];
+    const { tableName, subject, surveyName } = event;
+    getEmailList(ddb, tableName, context.fail, data => {
+        const { emails } = getListBySurveyName(surveyName, data);
+        const to = emails.SS || ['brcornelius@gmail.com'];
         const params = {
             Destination: {
                 ToAddresses: [...to]
