@@ -1,0 +1,8 @@
+{
+    "tableName": "samples",
+    "surveyName": "first",
+    "subject" : "Thank you for attending our event!",
+    "message": "you are awesome",
+    "linkLabel": "Click Here",
+    "url": "corneliuses.com"
+}
