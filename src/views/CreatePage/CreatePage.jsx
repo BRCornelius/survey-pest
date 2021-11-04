@@ -24,7 +24,7 @@ export const CreatePage = () => {
         <input type="text" value={surveyName} onChange={e => setSurveyName(e.target.value)} />
         <label>Survey URL</label>
         <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-        {generateEmailInputs().map(email => <div className="row">
+        {generateEmailInputs().map((email, i) => <div className="row" key={i}>
             <input type="text" className="input-row" />
             <button
                 onClick={() => setEmailsLength(emailsLength -= 1)}
